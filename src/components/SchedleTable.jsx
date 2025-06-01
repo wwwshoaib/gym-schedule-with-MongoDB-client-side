@@ -1,18 +1,20 @@
-import React from "react";
+
 import { FaFile, FaTrash } from "react-icons/fa";
 import { MdDone, MdOutlineDoneAll } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const ScheduleTable = () => {
+const ScheduleTable = ( {schedule, idx }) => {
+  const { _id, title, day, date, hour} = schedule;
+  //console.log(_id)
   const isCompleted = true;
   return (
     <>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{idx + 1}</td>
+        <td>{title}</td>
+        <td>{day}</td>
+        <td>{date}</td>
+        <td>{hour}</td>
         <td>
           <div className="flex gap-4">
             {" "}

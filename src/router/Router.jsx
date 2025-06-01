@@ -19,6 +19,7 @@ const router = createBrowserRouter([
       {
         path: "/allSchedule",
         element: <Schedule></Schedule>,
+        loader: () => fetch("http://localhost:8800/schedule"),
       },
 
       {

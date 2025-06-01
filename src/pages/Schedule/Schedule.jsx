@@ -1,4 +1,9 @@
+import { useLoaderData } from "react-router-dom";
+import ScheduleTable from "../../components/SchedleTable";
+
 const Schedule = () => {
+  const scheduleData = useLoaderData();
+  console.log(scheduleData);
   return (
     <>
       <div className="w-[400px] mx-auto mb-4">
@@ -25,7 +30,19 @@ const Schedule = () => {
                 <th>Auction</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              {
+                scheduleData.length === 0?  <p>No data found!</p>
+                : scheduleData.map((schedule, index) => (
+                  <ScheduleTable
+                  key = {schedule?._id}
+                  idx = {index}
+                  schedule = {schedule}
+                  > </ScheduleTable>
+
+                ))
+              }
+            </tbody>
           </table>
         </div>
       </div>
