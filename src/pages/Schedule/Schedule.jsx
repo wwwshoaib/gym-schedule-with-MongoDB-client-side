@@ -1,8 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import ScheduleTable from "../../components/SchedleTable";
+import { useState } from "react";
 
 const Schedule = () => {
-  const scheduleData = useLoaderData();
+  const data = useLoaderData();
+  //state declaration for updating data on the UI after the delete operation
+  
+  const [scheduleData, setScheduleData] = useState(data)
   console.log(scheduleData);
   return (
     <>
@@ -38,6 +42,8 @@ const Schedule = () => {
                   key = {schedule?._id}
                   idx = {index}
                   schedule = {schedule}
+                  scheduleData = {scheduleData}
+                  setScheduleData = {setScheduleData}
                   > </ScheduleTable>
 
                 ))
