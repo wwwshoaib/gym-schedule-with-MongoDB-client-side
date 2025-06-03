@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 const ScheduleTable = ( {schedule, idx,  scheduleData,   setScheduleData }) => {
-  const { _id, title, day, date, hour} = schedule;
+  const { _id, title, day, date, hour, isCompleted} = schedule;
   //console.log(_id)
-  const isCompleted = true;
+  
   
   //Delete operation implementation on the frontend
   const handleDelete = id => {
@@ -20,17 +20,32 @@ const ScheduleTable = ( {schedule, idx,  scheduleData,   setScheduleData }) => {
       const newData = scheduleData.filter((schedule => id != schedule._id));
       setScheduleData(newData);
       //  console.log(result);
-     
-      
       if (result.deletedCount>0) {
             Swal.fire("Data deleted successfully!");
           } else {
             Swal.fire("Something went wrong.");
           }
-      
+    })
+  }  
 
+  
+  //PATCH operation for the status implementation
+  const handleUpdateStatus = id => {
+    // console.log(id)
+    fetch(`http://localhost:8800/status/${id}`, {
+      method: "PATCH",
+    })
+    .then((res) => res.json())
+    .then((result) => {
+      console.log(result)
+      const newData = scheduleData.map((schedule) => schedule._id === id ? { ...schedule, isCompleted:true}
+      : schedule
+    )
+    setScheduleData(newData);
     })
   }
+
+
   return (
     <>
       <tr>
@@ -53,7 +68,8 @@ const ScheduleTable = ( {schedule, idx,  scheduleData,   setScheduleData }) => {
                 <FaFile />
               </Link>
             </button>
-            <button className="bg-pink-500 px-4 py-2 rounded text-white">
+            <button onClick={() =>handleUpdateStatus(_id)}
+            className="bg-pink-500 px-4 py-2 rounded text-white">
               {isCompleted ? <MdOutlineDoneAll /> : <MdDone />}
             </button>
           </div>

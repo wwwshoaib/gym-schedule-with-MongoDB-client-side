@@ -37,11 +37,6 @@ const UpdateSchedule = () => {
   const handleUpdateSchedule = (e) => {
     e.preventDefault();
 
-
-
-
-
-
     // Example of formatting to send to backend
     const formattedTime = hour.toLocaleTimeString([], {
       hour: "2-digit",

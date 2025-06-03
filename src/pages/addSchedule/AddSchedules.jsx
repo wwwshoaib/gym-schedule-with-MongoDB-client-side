@@ -35,7 +35,8 @@ const AddCoffee = () => {
       title: title,
       day: day,
       date: formattedDate,
-      hour: formatHour
+      hour: formatHour,
+      isCompleted: false,
     }
 
    // console.log(date);

@@ -31,7 +31,7 @@ const Schedule = () => {
                 <th>Day</th>
                 <th>Date</th>
                 <th>Time</th>
-                <th>Auction</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
