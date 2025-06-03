@@ -19,7 +19,7 @@ const ScheduleTable = ( {schedule, idx,  scheduleData,   setScheduleData }) => {
     .then((result) => {
       const newData = scheduleData.filter((schedule => id != schedule._id));
       setScheduleData(newData);
-        console.log(result);
+      //  console.log(result);
      
       
       if (result.deletedCount>0) {

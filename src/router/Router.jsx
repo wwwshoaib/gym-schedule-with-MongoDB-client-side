@@ -29,6 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <UpdateSchedule></UpdateSchedule>,
+        loader: ({params}) => fetch(`http://localhost:8800/schedule/${params.id}`)
       },
     ],
   },
